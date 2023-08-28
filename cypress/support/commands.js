@@ -1,25 +1,31 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('fillMandatoryFieldsAndSubmit', user => {
+    cy.get('#firstName')
+        .click()
+        .type('XPTO')
+        .should('have.value', 'XPTO')
+
+    cy.get('#lastName')
+        .click()
+        .type('Xavier')
+        .should('have.value', 'Xavier')
+
+    cy.get('#email')
+        .click()
+        .type('xptoxavier@hotmail.com')
+        .should('have.value', 'xptoxavier@hotmail.com')
+
+    cy.get('#phone')
+        .click()
+        .type('5684712')
+        .should('have.value', '5684712')
+
+    cy.get('#open-text-area')
+        .click()
+        .type('Teste de escrita do Cypress')
+        .should('have.value', 'Teste de escrita do Cypress')
+
+    cy.get('.button')
+        .click()
+        .get('.success')
+        .should('be.visible')
+})
