@@ -87,7 +87,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
       .get('.error')
       .should('be.visible')
   })
-  it.only('preenche e limpa os campos nome, sobrenome, email e telefone', function () {
+  it('preenche e limpa os campos nome, sobrenome, email e telefone', function () {
     cy.get('#firstName')
       .click()
       .type('XPTO')
@@ -123,7 +123,8 @@ describe('Central de Atendimento ao Cliente TAT', function () {
       .get('.error')
       .should('be.visible')
   })
-  it('envia o formuário com sucesso usando um comando customizado', function () {
+  it.only('envia o formuário com sucesso usando um comando customizado', function () {
     cy.fillMandatoryFieldsAndSubmit()
+    .get('.success').should('be.visible')
   })
 })
