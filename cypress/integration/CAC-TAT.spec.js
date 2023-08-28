@@ -58,7 +58,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
       .type('XPTO')
 
   })
-  it.only('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido', function () {
+  it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido', function () {
     cy.get('#firstName')
       .click()
       .type('XPTO')
@@ -87,7 +87,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
       .get('.error')
       .should('be.visible')
   })
-  it('preenche e limpa os campos nome, sobrenome, email e telefone', function () {
+  it.only('preenche e limpa os campos nome, sobrenome, email e telefone', function () {
     cy.get('#firstName')
       .click()
       .type('XPTO')
@@ -116,17 +116,6 @@ describe('Central de Atendimento ao Cliente TAT', function () {
       .clear()
       .should('have.value', '')
 
-    cy.get('#open-text-area')
-      .click()
-      .type('Teste de escrita do Cypress')
-      .should('have.value', 'Teste de escrita do Cypress')
-      .clear()
-      .should('have.value', '')
-
-    cy.get('.button')
-      .click()
-      .get('.error')
-      .should('be.visible')
   })
   it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function () {
     cy.get('.button')
