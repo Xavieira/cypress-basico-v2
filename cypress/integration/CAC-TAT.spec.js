@@ -25,7 +25,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
       .click()
       .type('Teste de escrita do Cypress')
 
-    cy.get('.button')
+    cy.contains('button', 'Enviar')
       .click()
 
     cy.get('.success').should('be.visible')
@@ -46,7 +46,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     cy.get('#open-text-area')
       .click()
       .type('Teste de escrita do Cypress')
-    cy.get('.button')
+    cy.contains('button', 'Enviar')
       .click()
 
     cy.get('.error')
@@ -82,7 +82,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
       .type('Teste de escrita do Cypress')
       .should('have.value', 'Teste de escrita do Cypress')
 
-    cy.get('.button')
+    cy.contains('button', 'Enviar')
       .click()
       .get('.error')
       .should('be.visible')
@@ -118,12 +118,12 @@ describe('Central de Atendimento ao Cliente TAT', function () {
 
   })
   it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function () {
-    cy.get('.button')
+    cy.contains('button', 'Enviar')
       .click()
       .get('.error')
       .should('be.visible')
   })
-  it.only('envia o formuário com sucesso usando um comando customizado', function () {
+  it('envia o formuário com sucesso usando um comando customizado', function () {
     cy.fillMandatoryFieldsAndSubmit()
     .get('.success').should('be.visible')
   })
